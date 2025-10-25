@@ -1,0 +1,103 @@
+version: '3.8'
+
+services:
+  # Gateway
+  gateway:
+    build:
+      context: ./src/Gateway
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:5000
+    depends_on:
+      - ingestion
+      - validation
+      - analysis
+      - notification
+
+  # Ingestão
+  ingestion:
+    build:
+      context: ./src/Services/Ingestion
+      dockerfile: Dockerfile
+    ports:
+      - "7001:7001"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:7001
+      - ConnectionStrings__DefaultConnection=Server=sqlserver;Database=CorisSeguros_Ingestion;User Id=sa;Password=YourStrong@Passw0rd;TrustServerCertificate=true
+      - ConnectionStrings__AzureStorage=DefaultEndpointsProtocol=https;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;EndpointSuffix=core.windows.net
+      - ConnectionStrings__ServiceBus=Endpoint=sb://localhost:5672;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=yourkey
+    depends_on:
+      - sqlserver
+      - azurite
+
+  # Validação
+  validation:
+    build:
+      context: ./src/Services/Validation
+      dockerfile: Dockerfile
+    ports:
+      - "7003:7003"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:7003
+      - ConnectionStrings__DefaultConnection=Server=sqlserver;Database=CorisSeguros_Validation;User Id=sa;Password=YourStrong@Passw0rd;TrustServerCertificate=true
+    depends_on:
+      - sqlserver
+
+  # Análise
+  analysis:
+    build:
+      context: ./src/Services/Analysis
+      dockerfile: Dockerfile
+    ports:
+      - "7004:7004"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:7004
+      - ConnectionStrings__DefaultConnection=Server=sqlserver;Database=CorisSeguros_Analysis;User Id=sa;Password=YourStrong@Passw0rd;TrustServerCertificate=true
+    depends_on:
+      - sqlserver
+
+  # Notificação
+  notification:
+    build:
+      context: ./src/Services/Notification
+      dockerfile: Dockerfile
+    ports:
+      - "7005:7005"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:7005
+      - ConnectionStrings__DefaultConnection=Server=sqlserver;Database=CorisSeguros_Notification;User Id=sa;Password=YourStrong@Passw0rd;TrustServerCertificate=true
+    depends_on:
+      - sqlserver
+
+
+  # SQL Server
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=YourStrong@Passw0rd
+    ports:
+      - "1433:1433"
+    volumes:
+      - sqlserver_data:/var/opt/mssql
+
+  # Azurite (Azure Storage Emulator)
+  azurite:
+    image: mcr.microsoft.com/azure-storage/azurite
+    ports:
+      - "10000:10000"
+      - "10001:10001"
+      - "10002:10002"
+    volumes:
+      - azurite_data:/data
+
+volumes:
+  sqlserver_data:
+  azurite_data:
