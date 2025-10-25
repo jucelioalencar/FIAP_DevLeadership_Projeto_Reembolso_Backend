@@ -12,6 +12,12 @@ Este projeto foi desenvolvido como parte do curso **FIAP DevLeadership** e tem c
 - 🚀 **Aplicar boas práticas** de DevOps, CI/CD e monitoramento
 - 🔗 **Mostrar integração** entre diferentes serviços e APIs externas
 
+### 📸 Demonstração do Sistema
+
+![Sistema em Funcionamento](docs/print.png)
+
+*Screenshot mostrando todos os serviços rodando com sucesso no Docker Compose*
+
 ## 🏗️ Arquitetura de Microsserviços
 
 Este projeto implementa uma solução completa de automação de reembolso utilizando arquitetura de microsserviços no Azure, demonstrando os conceitos aprendidos no curso FIAP DevLeadership.
