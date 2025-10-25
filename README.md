@@ -12,7 +12,7 @@ Este projeto foi desenvolvido como parte do curso **FIAP DevLeadership** e tem c
 - 🚀 **Aplicar boas práticas** de DevOps, CI/CD e monitoramento
 - 🔗 **Mostrar integração** entre diferentes serviços e APIs externas
 
-### 📸 Demonstração do Sistema
+### 📸 Demonstração de Containers
 
 ![Sistema em Funcionamento](./docs/print.png)
 
@@ -200,6 +200,7 @@ Este projeto foi desenvolvido como parte do curso **FIAP DevLeadership** para de
 
 ### 👥 Autores
 
+-  **Autor**: Jucelio Alencar 
 - 🎓 **Curso**: FIAP DevLeadership
 - 🎯 **Objetivo**: Demonstrar arquitetura de microsserviços
 - 🛠️ **Tecnologias**: .NET 8, Azure, Docker, SQL Server
