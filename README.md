@@ -14,7 +14,7 @@ Este projeto foi desenvolvido como parte do curso **FIAP DevLeadership** e tem c
 
 ### 📸 Demonstração do Sistema
 
-![Sistema em Funcionamento](docs/print.png)
+<img src="./docs/print.png" alt="Sistema em Funcionamento" width="800">
 
 *Screenshot mostrando todos os serviços rodando com sucesso no Docker Compose*
 
