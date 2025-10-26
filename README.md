@@ -7,7 +7,7 @@ Este projeto foi desenvolvido como parte do curso **FIAP DevLeadership** e tem c
 ### 🎯 Objetivos do Projeto
 
 - 🏗️ **Demonstrar arquitetura de microsserviços** com separação clara de responsabilidades
-- 🔧 **Implementar padrões de desenvolvimento** como DDD, CQRS e Event Sourcing
+- 🔧 **Implementar padrões de desenvolvimento** como Clean Arch, DDD, CQRS e Event Sourcing
 - ☁️ **Utilizar tecnologias cloud** do Azure para escalabilidade e confiabilidade
 - 🚀 **Aplicar boas práticas** de DevOps, CI/CD e monitoramento
 - 🔗 **Mostrar integração** entre diferentes serviços e APIs externas
