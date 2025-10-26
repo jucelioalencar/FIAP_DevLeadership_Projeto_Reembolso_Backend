@@ -14,7 +14,7 @@ Este projeto foi desenvolvido como parte do curso **FIAP DevLeadership** e tem c
 
 ### 📸 Demonstração de Containers
 
-![Sistema em Funcionamento](./docs/print.png)
+![Sistema em Funcionamento](docs/print.png)
 
 *Screenshot mostrando todos os serviços rodando com sucesso no Docker Compose*
 
